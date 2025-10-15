@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<!-- saved from url=(0035)/ -->
+<html lang="en" class="k-webkit k-webkit140">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./assets/app.css" type="text/css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+</head>
+
+<body x-data="{ currentUrl: 'Main.html' }">
+    <div class="container-fluid">
+        <div class="header-content d-flex justify-content-between align-items-center">
+            <div style="float:left;vertical-align:middle;">
+                <a style="margin-left:0px;margin-top:0px;" href="/" title="Trung tâm Luyện chữ đẹp Việt Anh"><img
+                        class="Logo" src="./Login_files/Logo.png"><b>Trung Tâm Luyện Chữ Đẹp Việt Anh</b></a>
+            </div>
+            <div>
+                <div class="dropdown mydropdownjQuery body">
+                    <!-- Menu Toggle Button -->
+                    <a id="userInfo" href="/#" title="Chi tiết tài khoản" data-toggle="dropdown"><img alt="avatar"
+                            style="height:39px;border-radius: 50%;" src="./assets/home/MyProfile.png">Chi Nhánh
+                        (vietanhchinhanh@gmail.com)</a>
+                    <ul class="dropdown-menu" style="margin-right:15px;">
+                        <li><a href="/Account/MyProfile"><img alt="" src="./assets/home/MyProfile(1).png"
+                                    style="height:25px; margin-left: 5px;">&nbsp;<span data-i18n="lbl_004"></span></a>
+                        </li>
+                        <li><a href="/Account/ChangePassword"><img alt="" src="./assets/home/ChangePassword_25.png"
+                                    style="height: 25px; margin-left: 5px;">&nbsp;<span data-i18n="lbl_005"></span></a>
+                        </li>
+                        <li><a href="/Account/LogOut"><img alt="" src="./assets/home/LogOut.png"
+                                    style="height: 25px; margin-left: 5px;">&nbsp;<span data-i18n="lbl_006"></span></a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+        <div style="width:100%;margin-bottom:5px;min-height: 100vh">
+            <table style="width:100%; min-height: 100vh">
+                <tbody>
+                    <tr>
+                        <td style="vertical-align:top;background-color:#00A0D2;width:172px;height:650px;">
+
+                            <div id="responsive-panel"
+                                class="navbar-left k-rpanel k-rpanel-top _c1b5f01f-8d36-4965-95d8-d9e274b57a22"
+                                data-role="responsivepanel">
+                                <nav id="main-menu">
+                                    <ul>
+                                        <li><a href="javascript:void(0);" @click="currentUrl='Main.html'"><img
+                                                    class="k-image" alt="" src="./assets/home/Home_25.png">
+                                                Trang Chủ</a></li>
+                                        <li>
+                                            <a href="javascript:void(0);">
+                                                <img class="k-image" alt="" src="./assets/home/FingerMath_25.png">
+                                                FingerMath</a>
+                                            <ul class="sub-menu">
+                                                <li><a href="javascript:void(0);"><img class="k-image" alt=""
+                                                            src="./assets/home/FlashCard_FingerMath_25.png"> Thẻ
+                                                        Hình</a></li>
+                                                <li><a href="javascript:void(0);"><img class="k-image" alt=""
+                                                            src="./assets/home/Finger_Math_25.png"> Luyện Tập</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);">
+                                                <img class="k-image" alt="" src="./assets/home/Abacus_25.png">
+                                                Soroban</a>
+                                            <ul class="sub-menu">
+                                                <li><a @click="currentUrl='SorobanOnline.html'"
+                                                        href="javascript:void(0);"><img class="k-image" alt=""
+                                                            src="./assets/Abacus_FlashCard_25.png"> Bàn tính ảo</a></li>
+                                                <li><a @click="currentUrl='LuyenTapSoroban.html'"
+                                                        href="javascript:void(0);"><img class="k-image" alt=""
+                                                            src="./assets/Soroban_25.png"> Luyện tập</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </nav>
+
+                            </div>
+
+                        </td>
+                        <td style="vertical-align:top;">
+                            <div class="iframe-container">
+                                <iframe :src="currentUrl" id="iFrameContent" frameborder="0"></iframe>
+                            </div>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

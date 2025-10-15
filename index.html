@@ -1,0 +1,15 @@
+<html lang="vi">
+<head><title>Trang chủ</title></head>
+<body>
+<script>
+    window.onload = function () {
+     const id = localStorage.getItem('id');
+     if(!id){
+         window.location.href = "Login.html"
+     }else{
+         window.location.href = "Home.html"
+     }
+    }
+</script>
+</body>
+</html>

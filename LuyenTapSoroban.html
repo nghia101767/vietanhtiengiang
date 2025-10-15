@@ -1,0 +1,2487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AQVN-Luy&#x1EC7;n t&#x1EAD;p Soroban</title>
+
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/site.css" />
+
+    <link href="/Kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Kendo/styles/kendo.blueopal.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Kendo/styles/kendo.common.min.css" rel="stylesheet" type="text/css" />
+
+    <script src="/Kendo/js/jquery.min.js"></script>
+    <script src="/Kendo/js/jszip.min.js"></script>
+    <script src="/Kendo/js/kendo.all.min.js"></script>
+    <script src="/Kendo/js/kendo.aspnetmvc.min.js"></script>
+
+    <script src="/js/CustomWindowKendo.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="/lib/microsoft/signalr/dist/browser/signalr.js"></script>
+
+    <script type="text/javascript" src="/js/polyfill.min.js"></script>
+    <script type="text/javascript" id="MathJax-script" async src="/js/tex-mml-chtml.js"></script>
+
+    <script type="text/javascript" src="/js/i18next/i18next.min.js"></script>
+    <script type="text/javascript" src="/js/i18next/i18nextXHRBackend.min.js"></script>
+    <script type="text/javascript" src="/js/i18next/jquery-i18next.min.js"></script>
+
+    <style type="text/css">
+        .container-fluid {
+            padding-left: 0px !important;
+        }
+
+        .header-content {
+            background-color: #00A0D2 !important;
+            height: 40px !important;
+            padding-left: 5px;
+            padding-right: 30px;
+        }
+
+        .body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-size: 9.5pt !important;
+        }
+
+        .body-content {}
+
+        .k-menu .k-item>.k-link {
+            /*            color: white !important;*/
+            font-size: 9.5pt;
+        }
+
+        .k-menu:not(.k-context-menu)>.k-item {
+            color: white;
+        }
+
+        .k-menu .k-state-hover>.k-link {
+            color: black !important;
+            background-color: lightblue !important;
+            font-size: 9.5pt;
+        }
+
+        .a {
+            background-color: royalblue;
+            color: white !important;
+        }
+
+        a {
+            /*color: white !important;*/
+        }
+
+        .navbar .k-link {
+            color: white !important;
+            background-color: #00A0D2;
+        }
+
+        .k-state-highlight>.k-link {
+            color: darkblue !important;
+            background-color: coral !important;
+            font-size: 9.5pt;
+        }
+
+        .k-menu .k-state-selected>.k-link {
+            color: black !important;
+            background-color: lightcyan !important;
+            font-size: 9.5pt;
+        }
+
+        .k-button {
+            background-color: #093861 !important;
+            color: #fafafa !important;
+        }
+
+        .k-menu,
+        .k-menu .k-group {
+            background-color: #00A0D2 !important;
+            color: white;
+            font-size: 9.5pt;
+        }
+
+        #userInfo {
+            padding: 0;
+            margin-bottom: -1px;
+            min-height: 300px;
+            color: white;
+        }
+
+        .k-listview:after {
+            content: ".";
+            display: block;
+            visibility: hidden;
+        }
+
+        .Left-Pane {
+            width: 100%;
+        }
+
+        .Title {
+            font-weight: bold;
+            font-size: 16pt;
+            color: black;
+            text-align: center;
+        }
+
+
+        a:link {
+            color: white;
+        }
+
+        /* visited link */
+        a:visited {
+            color: white;
+        }
+
+        /* mouse over link */
+        a:hover {
+            color: white;
+        }
+
+        /* selected link */
+        a:active {
+            color: whitesmoke;
+        }
+
+        .k-splitter .k-pane {
+            overflow: visible !important;
+        }
+
+        .Logo {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background-color: white;
+        }
+
+        .LogoCompany {
+            margin-top: 15px;
+            width: 50%;
+            float: left;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .UserInfo {
+            float: right;
+        }
+
+        .UserInfo:hover {
+            float: right;
+        }
+
+        .avatar {
+            vertical-align: middle;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: white;
+        }
+
+        .k-tabstrip-items .k-item .k-link {
+            white-space: nowrap;
+        }
+
+        .k-tabstrip ul li.k-item {
+            width: 160px;
+        }
+
+        .Notification {
+            background-image: url("~/Images/Notification.png");
+            width: 45px;
+        }
+
+        .k-widget {
+            font-size: 9.5pt !important;
+        }
+
+        .dropdown-menu {
+            top: 12px !important;
+            background-color: #1b5282 !important;
+            font-size: 9.5pt !important;
+            padding-top: 3px !important;
+            padding-bottom: 3px !important;
+            padding-right: 1px !important;
+            padding-left: 1px !important;
+        }
+
+        .k-checkbox:checked+.k-checkbox-label:before {
+            background-color: red !important;
+        }
+
+        #clock {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin: 20px auto 0 auto;
+            background: url(images/clockface.jpg);
+            list-style: none;
+        }
+
+        #sec,
+        #min,
+        #hour {
+            position: absolute;
+            width: 30px;
+            height: 150px;
+            top: 0px;
+            left: 85px;
+        }
+
+        #sec {
+            background: url(images/sechand.png);
+            z-index: 3;
+        }
+
+        #min {
+            background: url(images/minhand.png);
+            z-index: 2;
+        }
+
+        #hour {
+            background: url(images/hourhand.png);
+            z-index: 1;
+        }
+
+        #clock1 {
+            /*display: none;*/
+            position: fixed;
+            top: 1px;
+            left: 1px;
+            z-index: 99;
+            font-size: 16px;
+            border: none;
+            outline: none;
+            background-color: red;
+            color: white;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        #clock1:hover {
+            background-color: #555;
+        }
+
+        .k-treeview .k-top,
+        .k-treeview .k-mid,
+        .k-treeview .k-bot {
+            background-image: url('/Images/treeview-nodes.png');
+            background-repeat: no-repeat;
+            margin-left: -16px;
+            padding-left: 16px;
+        }
+
+        .k-treeview .k-item {
+            background-image: url('/Images/treeview-line.png');
+        }
+
+        .k-treeview .k-last {
+            background-image: none;
+        }
+
+
+        .k-treeview .k-top {
+            background-position: -91px 0;
+        }
+
+        .k-treeview .k-bot {
+            background-position: -69px -22px;
+        }
+
+        .k-treeview .k-mid {
+            background-position: -47px -44px;
+        }
+
+        .k-treeview .k-last .k-top {
+            background-position: -25px -66px;
+        }
+
+        .k-treeview .k-group .k-last .k-bot {
+            background-position: -69px -22px;
+        }
+
+        .k-treeview .k-item {
+            background-repeat: no-repeat;
+        }
+
+        .k-treeview .k-first {
+            background-repeat: no-repeat;
+            background-position: 0 16px;
+        }
+
+        .owl-carousel {
+            -ms-touch-action: none;
+            touch-action: none;
+        }
+
+
+
+        .k-grid .k-grid-header .k-header,
+        .k-grid .k-grid-header-locked .k-header {
+            white-space: normal;
+        }
+
+        .k-grid .k-grid-header .k-header .k-link,
+        .k-grid .k-grid-header-locked .k-header .k-link {
+            height: auto;
+        }
+
+
+        .k-grid td {
+            border-width: 0 0 1px 1px !important;
+        }
+
+        .LayOutLeft {
+            width: 172px;
+            margin-right: -172px;
+            min-height: 450px;
+            background-color: #00A0D2;
+        }
+
+        .LayOutRight {
+            margin-left: 172px;
+            min-height: 450px;
+        }
+
+        .row {
+            font-size: 10pt;
+        }
+
+        .k-grid .k-grid-header .k-header .k-link {
+            height: auto;
+            text-align: center;
+        }
+
+        .k-grid .k-grid-header .k-header {
+            text-align: center;
+            white-space: normal;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+
+        <div style="width:100%;margin-bottom:5px;">
+            <table style="width:100%;">
+                <tr>
+
+                    <td style="vertical-align:top;">
+                        <style type="text/css">
+                            .k-radio-list .k-radio-item {
+                                margin-top: 8px !important;
+                            }
+
+                            label {
+                                margin-bottom: .4rem !important;
+                            }
+
+                            .k-listbox .k-list-scroller {
+                                border-color: transparent !important;
+                                border-width: 0px !important;
+                                border-style: none !important;
+                                padding: 0px;
+                                background-color: transparent !important;
+                            }
+
+                            .QuestionTitle {
+                                font-size: 12pt;
+                                font-weight: bold;
+                            }
+
+                            .BackHome {
+                                width: 100%;
+                                background-size: cover;
+                            }
+
+                            .BlankHeight {
+                                height: 8px;
+                            }
+
+                            .fs-wrap {
+                                width: 180px !important;
+                            }
+
+                            .fs-dropdown {
+                                width: 180px !important;
+                            }
+
+                            .form-control {
+                                height: 20px !important;
+                                width: 155px !important;
+                            }
+
+                            .DisplayNumber {
+                                font-size: 100px;
+                                font-weight: bold;
+                                vertical-align: middle;
+                            }
+
+                            .countdown {
+                                width: 720px;
+                                height: 60px;
+                                padding: 20px 0;
+                                text-align: center;
+                                background-color: #682a1a;
+                                margin: 60px auto;
+                                overflow: hidden;
+                                border-radius: 10px;
+                            }
+
+                            .k-animation-container,
+                            .k-animation-container *,
+                            .k-animation-container :after,
+                            .k-block .k-header,
+                            .k-list-container,
+                            .k-widget,
+                            .k-widget *,
+                            .k-widget :before {
+                                box-sizing: border-box !important;
+                            }
+
+                            .k-colorpicker .k-selected-color {
+                                width: 153px;
+                            }
+
+                            .countdown-time {
+                                display: block;
+                                text-align: center;
+                            }
+
+                            .countdown-time ul {
+                                display: inline-block;
+                            }
+
+                            .countdown-time li {
+                                float: left;
+                                text-align: center;
+                                height: 100px;
+                            }
+
+                            .countdown-time li.blank {
+                                line-height: 90px;
+                                width: 15px;
+                                color: #ffb33d;
+                                font-size: 50px;
+                            }
+
+                            .countdown-time li.item {
+                                width: 90px;
+                            }
+
+                            .countdown-time i {
+                                display: block;
+                                width: 90px;
+                                height: 90px;
+                                line-height: 90px;
+                                font-size: 60px;
+                                font-weight: bold;
+                                margin: auto;
+                                border-radius: 10px;
+                                box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+                                background: #fff;
+                                color: #ffb33d;
+                            }
+
+                            .countdown-time span {
+                                display: block;
+                                color: #fff;
+                                text-transform: uppercase;
+                                font-size: 14px;
+                                font-weight: bold;
+                                line-height: 1;
+                                margin-top: 10px;
+                            }
+                        </style>
+
+                        <link href="/css/mbExtruder/mbExtruder.css" rel="stylesheet">
+
+                        <script type="text/javascript" src="/js/mbExtruder/mbExtruder.js"></script>
+                        <script type="text/javascript" src="/js/mbExtruder/jquery.mb.flipText.js"></script>
+                        <script type="text/javascript" src="/js/mbExtruder/jquery.hoverIntent.min.js"></script>
+
+
+                        <input data-val="true" data-val-required="The AccountId field is required." id="AccountId"
+                            name="AccountId" type="hidden" value="37547" />
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="k-widget k-tabstrip" id="SorobanTabstrip" style="height: 672px;">
+                                    <ul class="k-reset k-tabstrip-items">
+                                        <li class="k-item k-active"><span class="k-link" unselectable="on">Luy&#x1EC7;n
+                                                t&#x1EAD;p Soroban</span></li>
+                                        <li class="k-item"><span class="k-link" unselectable="on">Thi&#x1EBF;t
+                                                l&#x1EAD;p tham s&#x1ED1;</span></li>
+                                    </ul>
+                                    <div class="k-content k-active" id="SorobanTabstrip-1" style="display:block">
+                                        <div class="flipTimer" style="display:none">
+                                            <div class="hours"></div>
+                                            <div class="minutes"></div>
+                                            <div class="seconds"></div>
+                                        </div>
+                                        <div id="extruderShowNumber" class="{title:'Chi tiết phép tính', url:''}">
+                                            <div id="divListData" style="margin-top:30px;"></div>
+                                        </div>
+                                        <div id="SorobanBackGround"
+                                            style="width:100%; height:100%;background-size: cover; background-image:url('/Images/BackGround/BackGround_09.png');">
+                                            <table style="width:100%">
+                                                <tr>
+                                                    <td style="vertical-align:top;width:80px;">
+                                                        <select id="listViewQuestion" name="listViewQuestion"
+                                                            style="height: 550px;width:90px;"></select>
+                                                        <script>kendo.syncReady(function () { jQuery("#listViewQuestion").kendoListBox({ "messages": { "tools": { "moveDown": "Move Down", "moveUp": "Move Up", "remove": "Delete", "transferAllFrom": "Transfer All From", "transferAllTo": "Transfer All To", "transferFrom": "Transfer From", "transferTo": "Transfer To" } }, "template": jQuery('#customer-item-template').html() }); });</script>
+                                                    </td>
+                                                    <td style="vertical-align:top;">
+                                                        <div style="width:100%; height:100%;">
+                                                            <div
+                                                                style="width:100%;text-align:center;height:555px;vertical-align:middle;">
+                                                                <div id="divNumber" class="DisplayNumber"></div>
+                                                                <div id="divTotal" class="DisplayNumber"></div>
+                                                                <img id="imgFinger" alt="Finger" src="/Images/Blank.png"
+                                                                    style="display:none;height:280px;" />
+                                                            </div>
+                                                            <div style="vertical-align:top;margin-left:40px;">
+                                                                <input id="txtAnswer" name="txtAnswer"
+                                                                    style="width:130px;margin-bottom:1px;margin-left:0px;"
+                                                                    title="Tr&#x1EA3; l&#x1EDD;i" type="text"
+                                                                    value="" />
+                                                                <script>kendo.syncReady(function () { jQuery("#txtAnswer").kendoNumericTextBox({ "change": AnswerChange, "spin": AnswerSpin, "format": "{0:n0}", "placeholder": "Trả lời", "enable": false }); });</script>
+
+                                                                <span title="Trả lời">
+                                                                    <button id="btnAnswer" name="btnAnswer"
+                                                                        style="height: 48px; width:48px;margin-bottom:5px;margin-left:25px;"></button>
+                                                                    <script>kendo.syncReady(function () { jQuery("#btnAnswer").kendoButton({ "click": onClickAnswer, "enable": false, "imageUrl": "/Images/Equal_40.png" }); });</script>
+                                                                </span>
+
+                                                                <span title="Bắt đầu">
+                                                                    <button id="btnPlay" name="btnPlay"
+                                                                        style="height: 48px; width:48px;margin-bottom:5px;margin-left:10px;"></button>
+                                                                    <script>kendo.syncReady(function () { jQuery("#btnPlay").kendoButton({ "click": onClickPlay, "imageUrl": "/Images/Play_40.png" }); });</script>
+                                                                </span>
+
+                                                                <span title="Báo cáo">
+                                                                    <button id="btnReport" name="btnReport"
+                                                                        style="height: 48px; width:48px;margin-bottom:5px;margin-left:10px;"></button>
+                                                                    <script>kendo.syncReady(function () { jQuery("#btnReport").kendoButton({ "click": onClickReport, "imageUrl": "/Images/Chart_40.png" }); });</script>
+                                                                </span>
+
+                                                                <span title="Làm lại từ đầu">
+                                                                    <button id="btnReset" name="btnReset"
+                                                                        style="height: 48px; width:48px;margin-bottom:5px;margin-left:10px;"></button>
+                                                                    <script>kendo.syncReady(function () { jQuery("#btnReset").kendoButton({ "click": onClickReset, "imageUrl": "/Images/Reset_40.png" }); });</script>
+                                                                </span>
+
+                                                                <span title="Phóng to toàn màn hình">
+                                                                    <button id="btnZoomIn" name="btnZoomIn"
+                                                                        style="height: 48px; width:48px;margin-bottom:5px;margin-left:10px;"></button>
+                                                                    <script>kendo.syncReady(function () { jQuery("#btnZoomIn").kendoButton({ "click": onOpenDialog, "imageUrl": "/Images/Zoom_In_40.png" }); });</script>
+                                                                </span>
+
+                                                                <span title="Đổi hình nền">
+                                                                    <input id="BackGroundImage" name="BackGroundImage"
+                                                                        style="width: 105px;" type="text" value="" />
+                                                                    <script>kendo.syncReady(function () { jQuery("#BackGroundImage").kendoDropDownList({ "select": onSelectBackGround, "dataTextField": "BackGroundImage", "dataValueField": "Id", "height": 400, "template": "\u003cspan class=\u0027k-state-default\u0027\u003e\u003cimg style=\u0027height:50px;width:70px;\u0027 src=\u0027#:data.BackGroundImage#\u0027/\u003e\u003c/span\u003e", "valueTemplate": "\u003cspan class=\u0027selected-value\u0027\u003e\u003cimg style=\u0027height:25px;width:70px;\u0027 src=\u0027#:data.BackGroundImage#\u0027/\u003e\u003c/span\u003e", "dataSource": { "transport": { "read": { "url": "/BackGround/GetBackGroundList" }, "prefix": "" }, "schema": { "errors": "Errors" } } }); });</script>
+                                                                </span>
+                                                            </div>
+
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="k-content" id="SorobanTabstrip-2">
+                                        <div style="width:99%;">
+                                            <div class="row" style="margin-top:8px;">
+                                                <div class="col-sm-2">
+                                                    <span data-i18n="lbl_011">Họ và tên</span>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <input id="StudentName" name="StudentName" style="width: 100%"
+                                                        type="text" value="B&#xE9;o" />
+                                                    <script>kendo.syncReady(function () { jQuery("#StudentName").kendoTextBox({ "placeholder": "Họ và tên", "value": "Béo" }); });</script>
+                                                </div>
+                                                <div class="col-sm-2">
+                                                    <span data-i18n="lbl_012">Lớp</span>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <input id="ClassName" name="ClassName" style="width: 100%"
+                                                        type="text" value="Test" />
+                                                    <script>kendo.syncReady(function () { jQuery("#ClassName").kendoTextBox({ "placeholder": "Lớp", "value": "Test" }); });</script>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="margin-top:8px;">
+                                                <div class="col-sm-2">
+                                                    <span data-i18n="lbl_013">Số câu hỏi</span>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <input id="txtQuestion" name="txtQuestion" style="width: 180px"
+                                                        title="S&#x1ED1; c&#xE2;u h&#x1ECF;i" type="text" value="20" />
+                                                    <script>kendo.syncReady(function () { jQuery("#txtQuestion").kendoNumericTextBox({ "format": "{0:n0}", "max": 100, "min": 1, "placeholder": "Số câu hỏi" }); });</script>
+                                                </div>
+                                                <div class="col-sm-2">
+                                                    <span data-i18n="lbl_014">Độ dài phép tính</span>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <input id="txtRandom" name="txtRandom" style="width: 180px"
+                                                        title="&#x110;&#x1ED9; d&#xE0;i ph&#xE9;p t&#xED;nh" type="text"
+                                                        value="1" />
+                                                    <script>kendo.syncReady(function () { jQuery("#txtRandom").kendoNumericTextBox({ "format": "{0:n0}", "max": 100, "min": 1, "placeholder": "Độ dài phép tính" }); });</script>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="margin-top:8px;">
+                                                <div class="col-sm-2">
+                                                    <span data-i18n="lbl_015">Phép toán (cộng/trừ)</span>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <input id="checkAdd" name="checkAdd" type="checkbox"
+                                                        value="true" /><input name="checkAdd" type="hidden"
+                                                        value="false" />
+                                                    <script>kendo.syncReady(function () { jQuery("#checkAdd").kendoCheckBox({ "checked": false }); });</script>
+                                                    <span data-i18n="lbl_063">Phép cộng</span>
+                                                    <input id="checkSubtract" name="checkSubtract" type="checkbox"
+                                                        value="true" /><input name="checkSubtract" type="hidden"
+                                                        value="false" />
+                                                    <script>kendo.syncReady(function () { jQuery("#checkSubtract").kendoCheckBox({ "checked": false }); });</script>
+                                                    <span data-i18n="lbl_064">Phép trừ</span>
+                                                </div>
+                                                <div class="col-sm-2">
+
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <input id="checkMulti" name="checkMulti" type="checkbox"
+                                                        value="true" /><input name="checkMulti" type="hidden"
+                                                        value="false" />
+                                                    <script>kendo.syncReady(function () { jQuery("#checkMulti").kendoCheckBox({ "checked": true }); });</script>
+                                                    <span data-i18n="lbl_065">Phép nhân</span>
+                                                    <input id="checkDivision" name="checkDivision" type="checkbox"
+                                                        value="true" /><input name="checkDivision" type="hidden"
+                                                        value="false" />
+                                                    <script>kendo.syncReady(function () { jQuery("#checkDivision").kendoCheckBox({ "checked": true }); });</script>
+                                                    <span data-i18n="lbl_066">Phép chia</span>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="margin-top:8px;">
+                                                <div class="col-sm-2">
+                                                    <span data-i18n="lbl_016">Cấp độ</span>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <input id="ddlLevel" name="ddlLevel" style="width: 100%" type="text"
+                                                        value="39" />
+                                                    <script>kendo.syncReady(function () { jQuery("#ddlLevel").kendoDropDownList({ "change": onChange, "dataTextField": "LevelVn", "dataValueField": "Id", "height": 400, "value": "39", "filter": "contains", "dataSource": { "transport": { "read": { "url": "/Level/GetLevelList", "data": filterLevel } }, "group": [{ "field": "LevelGroupVn", "dir": "asc" }] } }); });</script>
+                                                </div>
+                                                <div class="col-sm-2">
+                                                    <span data-i18n="lbl_019">Thời gian mỗi phép tính (giây)</span>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <input id="txtDisplayTimeOut" name="txtDisplayTimeOut"
+                                                        style="width: 180px"
+                                                        title="Th&#x1EDD;i gian m&#x1ED7;i ph&#xE9;p t&#xED;nh (gi&#xE2;y)"
+                                                        type="text" value="4" />
+                                                    <script>kendo.syncReady(function () { jQuery("#txtDisplayTimeOut").kendoNumericTextBox({ "format": "{0:n2}", "max": 60, "min": 0.1, "placeholder": "Thời gian mỗi phép tính (giây)" }); });</script>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="margin-top:8px;">
+                                                <div class="col-sm-2">
+                                                    <span data-i18n="lbl_020">Thời gian trả lời (giây)</span>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <input id="txtAnswerTimeOut" name="txtAnswerTimeOut"
+                                                        style="width: 180px"
+                                                        title="Th&#x1EDD;i gian tr&#x1EA3; l&#x1EDD;i (gi&#xE2;y)"
+                                                        type="text" value="4" />
+                                                    <script>kendo.syncReady(function () { jQuery("#txtAnswerTimeOut").kendoNumericTextBox({ "format": "{0:n2}", "max": 60, "min": 1, "placeholder": "Thời gian trả lời (giây)" }); });</script>
+                                                </div>
+                                                <div class="col-sm-2">
+                                                    <span data-i18n="lbl_022">Âm thanh</span>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <input checked="checked" data-val="true"
+                                                        data-val-required="The Sound field is required." id="Sound"
+                                                        name="Sound" type="radio" value="1" /> <span
+                                                        data-i18n="lbl_057">Theo ngày</span>
+                                                    <input id="Sound" name="Sound" type="radio" value="0" /> <span
+                                                        data-i18n="lbl_058">Theo ngày</span>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="margin-top:8px;display:none;">
+                                                <div class="col-sm-2">
+
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <input checked="checked" data-val="true"
+                                                        data-val-required="The IsInteger field is required."
+                                                        id="IsInteger" name="IsInteger" type="radio" value="1" /> <label
+                                                        for="S__nguy_n">S&#x1ED1; nguy&#xEA;n</label>
+                                                    <input id="IsInteger" name="IsInteger" type="radio" value="0" />
+                                                    <label for="S__th_c">S&#x1ED1; th&#x1EF1;c</label>
+                                                </div>
+                                                <div class="col-sm-2">
+
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <input checked="checked" data-val="true"
+                                                        data-val-required="The IsNegative field is required."
+                                                        id="IsNegative" name="IsNegative" type="radio" value="0" />
+                                                    <label for="S__d__ng">S&#x1ED1; d&#x1B0;&#x1A1;ng</label>
+                                                    <input id="IsNegative" name="IsNegative" type="radio" value="1" />
+                                                    <label for="S___m">S&#x1ED1; &#xE2;m</label>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="margin-top:8px;">
+                                                <div class="col-sm-2">
+                                                    <span data-i18n="lbl_021">Số hạng</span> 1
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <input id="txtDigit1" name="txtDigit1" style="width: 180px"
+                                                        title="S&#x1ED1; h&#x1EA1;ng 1" type="text" value="1" />
+                                                    <script>kendo.syncReady(function () { jQuery("#txtDigit1").kendoNumericTextBox({ "change": ChangeDigit1, "spin": SpinDigit1, "format": "{0:n0}", "max": 9, "min": 1, "placeholder": "Số hạng 1" }); });</script>
+                                                </div>
+                                                <div class="col-sm-2">
+                                                    <span data-i18n="lbl_021">Số hạng</span> 2
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <input id="txtDigit2" name="txtDigit2" style="width: 180px"
+                                                        title="S&#x1ED1; h&#x1EA1;ng 2" type="text" value="1" />
+                                                    <script>kendo.syncReady(function () { jQuery("#txtDigit2").kendoNumericTextBox({ "change": ChangeDigit2, "spin": SpinDigit1, "format": "{0:n0}", "max": 9, "min": 1, "placeholder": "Số hạng 2" }); });</script>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="margin-top:8px;">
+                                                <div class="col-sm-2">
+                                                    <span data-i18n="lbl_024">Màu chữ</span> 1
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <input id="ddlFontColor1" name="ddlFontColor1" style="width: 180px"
+                                                        title="M&#xE0;u ch&#x1EEF; hi&#x1EC3;n th&#x1ECB;" type="color"
+                                                        value="#1d00fc" />
+                                                    <script>kendo.syncReady(function () { jQuery("#ddlFontColor1").kendoColorPicker({ "change": FontColorChange, "value": "#1d00fc" }); });</script>
+                                                </div>
+                                                <div class="col-sm-2">
+                                                    <span data-i18n="lbl_024">Màu chữ</span> 2
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <input id="ddlFontColor2" name="ddlFontColor2" style="width: 180px"
+                                                        title="M&#xE0;u ch&#x1EEF; hi&#x1EC3;n th&#x1ECB;" type="color"
+                                                        value="#fc04be" />
+                                                    <script>kendo.syncReady(function () { jQuery("#ddlFontColor2").kendoColorPicker({ "change": FontColorChange, "value": "#fc04be" }); });</script>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="margin-top:8px;">
+                                                <div class="col-sm-2">
+                                                    <span data-i18n="lbl_023">Cỡ chữ</span>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <input id="txtFontSize" name="txtFontSize" style="width: 180px"
+                                                        title="C&#x1EE1; ch&#x1EEF; hi&#x1EC3;n th&#x1ECB;" type="text"
+                                                        value="200" />
+                                                    <script>kendo.syncReady(function () { jQuery("#txtFontSize").kendoNumericTextBox({ "change": FontSizeChange, "format": "{0:n0}", "max": 200, "min": 20, "placeholder": "Cỡ chữ" }); });</script>
+                                                </div>
+                                                <div class="col-sm-2">
+                                                    <span data-i18n="lbl_025">Phạm vi kết quả</span>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <div>
+                                                        <input type="radio" id="rblResult1" name="rblResult"
+                                                            checked=checked value="9" /> <span id="lblResult1"
+                                                            style="margin-top:0px;">9</span>
+                                                    </div>
+                                                    <div>
+                                                        <input type="radio" id="rblResult2" name="rblResult"
+                                                            style="display:none" value="99" /> <span id="lblResult2"
+                                                            style="margin-top:0px;display:none">99</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="margin-top:15px;">
+                                                <div class="col-sm-2">
+                                                    <span data-i18n="lbl_029">Bảng cửu chương</span>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <input id="ddlMultiplicationType" name="ddlMultiplicationType"
+                                                        style="width: 100%" type="text" value="0" />
+                                                    <script>kendo.syncReady(function () { jQuery("#ddlMultiplicationType").kendoDropDownList({ "dataTextField": "Text", "dataValueField": "Value", "value": "0", "dataSource": [{ "Text": "Bảng cửu chương 1-\u003e9", "Value": "0", "Selected": false }, { "Text": "Bảng cửu chương 1-\u003e5", "Value": "1", "Selected": false }, { "Text": "Bảng cửu chương 6-\u003e9", "Value": "2", "Selected": false }] }); });</script>
+                                                </div>
+                                                <div class="col-sm-2">
+
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <span title="Lưu thiết lập">
+                                                        <button id="btnSave" name="btnSave" type="button">Lưu thiết
+                                                            lập</button>
+                                                        <script>kendo.syncReady(function () { jQuery("#btnSave").kendoButton({ "click": onClickSave, "icon": "dictionary-add" }); });</script>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <script>kendo.syncReady(function () { jQuery("#SorobanTabstrip").kendoTabStrip({ "animation": { "open": { "effects": "fade:in" } } }); });</script>
+                            </div>
+                        </div>
+                        <div style="display:none;">
+                            <audio id="audio" controls preload="auto">
+                                <source src="/Sounds/beep.wav" type="audio/wav" />
+
+                                <source src="/Sounds/Math/1.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/2.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/3.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/4.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/5.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/6.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/7.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/8.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/9.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/10.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/11.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/12.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/13.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/14.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/15.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/16.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/17.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/18.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/19.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/20.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/21.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/22.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/23.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/24.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/25.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/26.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/27.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/28.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/29.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/30.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/31.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/32.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/33.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/34.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/35.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/36.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/37.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/38.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/39.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/40.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/41.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/42.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/43.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/44.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/45.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/46.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/47.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/48.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/49.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/50.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/51.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/52.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/53.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/54.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/55.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/56.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/57.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/58.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/59.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/60.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/61.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/62.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/63.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/64.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/65.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/66.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/67.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/68.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/69.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/70.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/71.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/72.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/73.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/74.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/75.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/76.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/77.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/78.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/79.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/80.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/81.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/82.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/83.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/84.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/85.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/86.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/87.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/88.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/89.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/90.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/91.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/92.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/93.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/94.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/95.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/96.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/97.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/98.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/99.wav" type="audio/wav" />
+
+                                <source src="/Sounds/Math/Cong_1.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_2.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_3.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_4.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_5.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_6.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_7.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_8.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_9.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_10.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_11.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_12.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_13.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_14.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_15.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_16.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_17.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_18.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_19.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_20.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_21.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_22.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_23.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_24.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_25.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_26.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_27.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_28.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_29.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_30.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_31.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_32.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_33.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_34.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_35.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_36.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_37.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_38.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_39.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_40.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_41.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_42.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_43.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_44.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_45.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_46.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_47.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_48.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_49.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_50.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_51.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_52.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_53.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_54.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_55.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_56.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_57.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_58.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_59.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_60.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_61.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_62.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_63.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_64.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_65.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_66.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_67.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_68.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_69.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_70.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_71.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_72.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_73.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_74.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_75.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_76.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_77.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_78.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_79.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_80.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_81.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_82.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_83.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_84.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_85.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_86.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_87.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_88.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_89.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_90.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_91.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_92.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_93.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_94.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_95.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_96.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_97.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_98.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Cong_99.wav" type="audio/wav" />
+
+                                <source src="/Sounds/Math/Tru_1.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_2.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_3.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_4.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_5.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_6.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_7.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_8.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_9.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_10.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_11.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_12.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_13.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_14.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_15.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_16.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_17.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_18.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_19.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_20.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_21.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_22.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_23.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_24.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_25.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_26.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_27.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_28.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_29.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_30.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_31.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_32.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_33.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_34.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_35.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_36.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_37.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_38.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_39.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_40.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_41.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_42.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_43.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_44.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_45.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_46.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_47.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_48.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_49.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_50.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_51.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_52.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_53.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_54.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_55.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_56.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_57.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_58.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_59.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_60.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_61.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_62.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_63.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_64.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_65.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_66.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_67.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_68.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_69.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_70.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_71.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_72.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_73.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_74.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_75.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_76.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_77.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_78.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_79.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_80.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_81.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_82.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_83.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_84.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_85.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_86.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_87.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_88.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_89.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_90.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_91.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_92.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_93.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_94.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_95.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_96.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_97.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_98.wav" type="audio/wav" />
+                                <source src="/Sounds/Math/Tru_99.wav" type="audio/wav" />
+
+                            </audio>
+                        </div>
+
+                        <input type="hidden" id="Id" value="0" />
+                        <input type="hidden" id="ExamBatchId" value="0" />
+                        <input type="hidden" id="Step" value="0" />
+                        <input type="hidden" id="ListData" value="" />
+                        <input type="hidden" id="Total" value="0" />
+
+                        <div id="ReportSorobanExam" name="ReportSorobanExam" style="display:none"></div>
+                        <script>kendo.syncReady(function () { jQuery("#ReportSorobanExam").kendoWindow({ "iframe": true, "pinned": true, "scrollable": true, "visible": false, "content": null, "actions": ["Pin", "Refresh", "Maximize", "Close"], "title": "Báo cáo chi tiết kiểm tra luyện thi Soroban", "modal": true, "height": "740px", "width": "900px" }); });</script>
+
+                        <script id="customer-item-template" type="text/x-kendo-template">
+    <span class="QuestionTitle"><b>#: data.Id #</b> <img src="#: data.Icon #"/></span>
+</script>
+
+                        <script type="text/javascript">
+                            var arrayQuestion = [];
+
+                            function ChangeFont() {
+                                var fontSize = $("#txtFontSize").data("kendoNumericTextBox");
+                                var fontColor1 = $("#ddlFontColor1").data("kendoColorPicker");
+                                //var fontColor2 = $("#ddlFontColor2").data("kendoColorPicker");
+                                var divNum = $("#divNumber");
+
+                                if (fontSize != null && fontSize.value() != null) {
+                                    divNum.css("font-size", fontSize.value());
+                                }
+                                else {
+                                    divNum.css("font-size", 45);
+                                }
+
+                                if (fontColor1 != null && fontColor1.value() != null) {
+                                    divNum.css("color", fontColor1.value());
+                                }
+                                else {
+                                    divNum.css("color", "Blue");
+                                }
+                            }
+
+                            ChangeFont();
+
+                            function ShowHideControl() {
+                                var level = $("#ddlLevel").data("kendoDropDownList");
+                                var digit1 = $("#txtDigit1").data("kendoNumericTextBox");
+                                var digit2 = $("#txtDigit2").data("kendoNumericTextBox");
+
+                                if (digit1.value() < digit2.value()) {
+                                    GetMaxResult(digit2.value(), parseInt(level.value()));
+                                }
+                                else {
+                                    GetMaxResult(digit1.value(), parseInt(level.value()));
+                                }
+                            }
+
+                            function onClickPlay(e) {
+                                var maxResult = 0;
+
+                                if ($("#rblResult1").prop("checked")) {
+                                    maxResult = $("#rblResult1").val();
+                                }
+                                else {
+                                    maxResult = $("#rblResult2").val();
+                                }
+
+                                var digit1 = $("#txtDigit1").data("kendoNumericTextBox");
+                                var digit2 = $("#txtDigit2").data("kendoNumericTextBox");
+
+                                var fontColor1 = $("#ddlFontColor1").data("kendoColorPicker");
+                                var fontColor2 = $("#ddlFontColor2").data("kendoColorPicker");
+
+                                //Validate data
+                                var studentName = $("#StudentName").data("kendoTextBox");
+                                if (studentName.value() == "") {
+                                    alert("Họ và tên không được để trống!");
+                                    studentName.focus();
+                                    return false;
+                                }
+
+                                var className = $("#ClassName").data("kendoTextBox");
+
+                                var checkAdd = $("#checkAdd");
+                                var checkSubtract = $("#checkSubtract");
+                                var checkMulti = $("#checkMulti");
+                                var checkDivision = $("#checkDivision");
+
+                                var operationList = "";
+                                if (checkAdd.is(":checked")) {
+                                    operationList = "+";
+
+                                    if (checkSubtract.is(":checked")) {
+                                        operationList = operationList + ";-";
+                                    }
+
+                                }
+                                else {
+                                    if (checkMulti.is(":checked")) {
+                                        operationList = "x";
+                                    }
+
+                                    if (checkDivision.is(":checked")) {
+                                        operationList = operationList + ";:";
+                                    }
+                                }
+
+                                //Validate operation
+                                if (operationList == "") {
+                                    alert("Bạn phải chọn phép tính để luyện tập!");
+                                    return false;
+                                }
+
+                                var question = $("#txtQuestion").data("kendoNumericTextBox");
+                                if (question.value() == null) {
+                                    alert("Số câu hỏi không được để trống!");
+                                    question.focus();
+                                    return false;
+                                }
+
+                                var random = $("#txtRandom").data("kendoNumericTextBox");
+                                if (random.value() == null) {
+                                    alert("Độ dài phép tính không được để trống!");
+                                    random.focus();
+                                    return false;
+                                }
+
+                                if ($("#checkAdd").prop('checked') == false && $("#checkSubtract").prop('checked') == false && $("#checkMulti").prop('checked') == false && $("#checkDivision").prop('checked') == false) {
+                                    alert("Bạn phải chọn phép tính để kiểm tra!");
+                                    return false;
+                                }
+
+                                //Validate Digit
+                                if (digit1.value() == null || digit1.value() == "") {
+                                    alert('Số hạng 1 không được để trống!');
+                                    digit1.focus();
+                                    return false;
+                                }
+
+                                if (digit2.value() == null || digit2.value() == "") {
+                                    alert('Số hạng 2 không được để trống!');
+                                    digit2.focus();
+                                    return false;
+                                }
+
+                                //Validate
+                                var displayTimeOut = $("#txtDisplayTimeOut").data("kendoNumericTextBox");
+                                if (displayTimeOut.value() == null || displayTimeOut.value() == "") {
+                                    alert('Thời gian hiển thị không được để trống!');
+                                    displayTimeOut.focus();
+                                    return false;
+                                }
+
+                                var answerTimeOut = $("#txtAnswerTimeOut").data("kendoNumericTextBox");
+                                if (answerTimeOut.value() == null || answerTimeOut.value() == "") {
+                                    alert('Thời gian trả lời không được để trống!');
+                                    answerTimeOut.focus();
+                                    return false;
+                                }
+
+                                if (digit1.value() < digit2.value()) {
+                                    alert('Số hạng 1 phải lớn hơn hoặc bằng số hạng 2!');
+                                    digit1.focus();
+                                    return false;
+                                }
+
+                                //$('.flipTimer').show();
+
+                                //var currentCountDown = new Date();
+                                //currentCountDown.setSeconds(currentCountDown.getSeconds() + 3);
+
+                                //$('.flipTimer').flipTimer({
+                                //    direction: 'down', date: currentCountDown, callback: function () {
+
+                                //        $('.flipTimer').hide();
+
+                                //Set param
+                                var levelId = $("#ddlLevel").data("kendoDropDownList");
+
+                                if (levelId.value() == null) {
+                                    alert('Bạn chưa chọn cấp độ!');
+                                    return false;
+                                }
+
+                                $("#Total").val(0);
+                                $("#divNumber").text("");
+                                $("#divListData").text("");
+
+                                var answer = $("#txtAnswer").data("kendoNumericTextBox");
+                                if (answer != null) {
+                                    answer.value(null);
+                                }
+
+                                ChangeFont();
+
+                                //Hide Image
+                                var img = $("#imgFinger");
+                                img.attr("src", "/Images/Blank.png");
+                                img.hide();
+
+                                //Tang bien Step len 1 don vi
+                                var step = $("#Step").val();
+                                if (step != "") {
+                                    $("#Step").val(parseInt(step) + 1);
+                                }
+
+                                if (question.value() <= parseInt(step)) {
+                                    //Ket thuc Batch cu va reset lai data
+                                    step = 0;
+                                    $("#Step").val(1);
+                                    $("#Id").val(0);
+                                    $("#ExamBatchId").val(0);
+
+                                    arrayQuestion = [];
+
+                                    var listView = $("#listViewQuestion").data("kendoListBox");
+                                    listView.setDataSource(new kendo.data.DataSource({
+                                        data: arrayQuestion
+                                    }));
+                                    listView.dataSource.read(arrayQuestion);
+
+                                    var result = confirm('Bạn chắc chắn bắt đầu làm bài thi chứ?');
+
+                                    if (result) {
+                                        $("#listViewQuestion").data("kendoListBox").dataSource.read();
+                                    }
+                                    else {
+                                        return false;
+                                    }
+                                }
+                                else {
+                                    if ($("#ExamBatchId").val() == "0") {
+                                        var result = confirm('Bạn chắc chắn bắt đầu làm bài thi chứ?');
+
+                                        if (result) {
+                                            $("#listViewQuestion").data("kendoListBox").dataSource.read();
+                                        }
+                                        else {
+                                            return false;
+                                        }
+                                    }
+                                }
+
+                                if (arrayQuestion == null || arrayQuestion.length < 1) {
+                                    for (var i = 0; i < question.value(); i++) {
+                                        var model = {}
+                                        model.Id = (i + 1);
+                                        model.Icon = "../Images/Status/Gray.png";
+
+                                        arrayQuestion.push(model);
+                                    }
+
+                                    var listView = $("#listViewQuestion").data("kendoListBox");
+                                    listView.setDataSource(new kendo.data.DataSource({
+                                        data: arrayQuestion
+                                    }));
+                                    listView.dataSource.read(arrayQuestion);
+                                }
+                                else {
+                                    arrayQuestion[step].Icon = "../Images/Status/Blue.png";
+
+                                    var listView = $("#listViewQuestion").data("kendoListBox");
+                                    listView.setDataSource(new kendo.data.DataSource({
+                                        data: arrayQuestion
+                                    }));
+                                    listView.dataSource.read(arrayQuestion);
+                                }
+
+                                var sound = $("input[name='Sound']:checked").val();
+
+                                var obj = document.getElementById("audio");
+
+                                var ddlMultiplicationType = $("#ddlMultiplicationType").data("kendoDropDownList");
+
+                                var inputObj = {};
+                                inputObj.UserId = parseInt($("#AccountId").val());
+                                inputObj.LevelId = parseInt(levelId.value());
+                                inputObj.Digit1 = digit1.value();
+                                inputObj.Digit2 = digit2.value();
+                                inputObj.Question = question.value();
+                                inputObj.Duration = displayTimeOut.value();
+                                inputObj.Random = random.value();
+                                inputObj.Number = "0";
+                                inputObj.Color1 = fontColor1.value();
+                                inputObj.Color2 = fontColor2.value();
+                                inputObj.IsFingerMath = false;
+                                inputObj.OperationList = operationList;
+                                inputObj.FullName = studentName.value();
+                                inputObj.ClassName = className.value();
+
+                                inputObj.MultiplicationTypeId = parseInt(ddlMultiplicationType.value());
+
+                                if (sound == 1) {
+                                    inputObj.Sound = true;
+                                }
+                                else {
+                                    inputObj.Sound = false;
+                                }
+                                inputObj.ExamBatchId = parseInt($("#ExamBatchId").val());
+                                inputObj.MaxResult = parseFloat(maxResult);
+
+                                //inputObj.Result = parseInt("0");
+                                inputObj.IsInteger = true;
+                                inputObj.IsNegative = false;
+
+                                if (inputObj.ExamBatchId == null) {
+                                    inputObj.ExamBatchId = 0;
+                                }
+                                //Validate data before submit
+                                if (inputObj.UserId == null) {
+                                    alert('Tài khoản người dùng đã hết phiên sử dụng hoặc có gián đoạn về mạng! Hãy load lại trang!');
+                                    return false;
+                                }
+                                if (inputObj.LevelId == null) {
+                                    alert('Lỗi lựa chọn thông tin cấp độ! Hãy load lại trang!');
+                                    return false;
+                                }
+                                if (inputObj.Digit1 == null) {
+                                    alert('Lỗi lựa chọn thông tin Số chữ số 1! Hãy load lại trang!');
+                                    return false;
+                                }
+                                if (inputObj.Digit2 == null) {
+                                    alert('Lỗi lựa chọn thông tin Số chữ số 2! Hãy load lại trang!');
+                                    return false;
+                                }
+                                if (inputObj.Question == null) {
+                                    alert('Lỗi thông tin số câu hỏi! Hãy load lại trang!');
+                                    return false;
+                                }
+                                if (inputObj.Duration == null) {
+                                    alert('Thời gian cho mỗi phép tính! Hãy load lại trang!');
+                                    return false;
+                                }
+                                if (inputObj.Random == null) {
+                                    alert('Lỗi thông tin độ dài phép tính! Hãy load lại trang!');
+                                    return false;
+                                }
+                                if (inputObj.MaxResult == null) {
+                                    alert('Tham số phạm vi kết quả bị lỗi! Hãy load lại trang!');
+                                    return false;
+                                }
+
+                                var connectionGenNumber = new signalR.HubConnectionBuilder()
+                                    .withUrl("/ChatHub", { skipNegotiation: true, transport: signalR.HttpTransportType.WebSockets })
+                                    .configureLogging(signalR.LogLevel.Information)
+                                    .withAutomaticReconnect()
+                                    .build();
+
+                                connectionGenNumber.start().then(function () {
+                                    connectionGenNumber.invoke("GenNumber", inputObj).catch(function (err) {
+                                        alert('Có lỗi đã xảy ra, có thể do gián đoạn mạng, hãy load lại trình duyệt.');
+                                        return console.error(err.toString());
+                                    });
+
+                                    connectionGenNumber.on("GenNumber", function (resultObj) {
+                                        $("#divNumber").css("color", resultObj.FontColor);
+
+                                        if (levelId.value() == 42 || levelId.value() == 43) {
+                                            //const e = document.getElementById('divNumber');
+
+                                            //So hien thi tren man hinh
+                                            $("#divNumber").text(resultObj.Display);
+
+                                            //List phep tinh hien thi o Tab Display
+                                            $("#divListData").text(resultObj.ListOperation);
+
+                                            MathJax.typesetPromise();
+                                        }
+                                        else if (levelId.value() == 39 || levelId.value() == 40) {
+                                            //So hien thi tren man hinh
+                                            $("#divNumber").text(resultObj.Display);
+
+                                            //List phep tinh hien thi o Tab Display
+                                            $("#divListData").text(resultObj.ListOperation);
+
+                                            //MathJax.Hub.Queue(["Typeset", MathJax.Hub, "divNumber"]);
+
+                                            MathJax.typesetPromise();
+                                        }
+                                        else {
+                                            //So hien thi tren man hinh
+                                            $("#divNumber").text(resultObj.Display);
+                                            //List phep tinh hien thi o Tab Display
+                                            $("#divListData").text(resultObj.ListOperation);
+                                        }
+
+                                        $("#Id").val(resultObj.Id);
+                                        $("#ExamBatchId").val(resultObj.ExamBatchId);
+
+                                        //Luu gia tri an de xu ly hidden field
+                                        //Luu giu ket qua cuoi cung cua phep tinh
+                                        $("#Total").val(resultObj.Result);
+                                        //List chuoi cac phep tinh hien thi
+                                        //$("#ListData").val(resultObj.listOperation);
+
+                                        if (displayTimeOut.value() <= 0.3) {
+                                            //Ko phat ra am thanh nua vi toc do nhanh qua, doc am thanh ko kip
+                                        }
+                                        else if (resultObj.Number <= 100 && sound == 1 && displayTimeOut.value() > 1) {
+                                            obj.setAttribute("src", "/Sounds/Math/" + resultObj.FileSound);
+                                            $.get();
+                                            obj.play();
+                                        }
+                                        else {
+                                            obj.setAttribute("src", "/Sounds/Beep.wav");
+                                            $.get();
+                                            obj.play();
+                                        }
+
+                                        if (resultObj.Stop) {
+                                            if (answer != null) {
+                                                answer.enable(true);
+                                                answer.focus();
+                                            }
+                                        }
+                                    });
+                                });
+
+                                var buttonObject = $("#btnAnswer").data("kendoButton");
+                                buttonObject.enable(true);
+                                //    },
+                                //    seconds: true, minutes: true, hours: true, days: false
+                                //});
+                            }
+
+                            function onClickAnswer(e) {
+                                //Validate data
+                                var random = $("#txtRandom").data("kendoNumericTextBox");
+                                var question = $("#txtQuestion").data("kendoNumericTextBox");
+                                if (random.value() == null || random.value() == "") {
+                                    alert('Độ dài phép tính không được để trống!');
+                                    random.focus();
+                                    return false;
+                                }
+
+                                var answer = $("#txtAnswer").data("kendoNumericTextBox");
+                                if (answer.value() == null) {
+                                    alert('Bạn phải nhập giá trị trả lời kết quả!');
+                                    return false;
+                                }
+
+                                var divNumber = $("#divNumber");
+                                var img = $("#imgFinger");
+                                var total = $("#Total").val();
+
+                                img.show();
+
+                                $.ajax({
+                                    url: '/Abacus/UpdateAbacusAnswerDetail',
+                                    type: 'POST',
+                                    dataType: 'json',
+                                    data: { "ExamBatchId": $("#ExamBatchId").val(), "ModuleId": 1, "Id": $("#Id").val(), "Answer": answer.value() },
+                                    success: function (data, textStatus, xhr) {
+
+                                        //$("#listViewQuestion").data("kendoListBox").dataSource.read();
+                                    },
+                                    error: function (xhr, textStatus, errorThrown) {
+                                        alert(errorThrown);
+                                    }
+                                });
+
+                                var step = $("#Step").val();
+
+                                if (answer.value() == total) {
+                                    arrayQuestion[step - 1].Icon = "../Images/Status/Agree.png";
+
+                                    var listView = $("#listViewQuestion").data("kendoListBox");
+                                    listView.setDataSource(new kendo.data.DataSource({
+                                        data: arrayQuestion
+                                    }));
+                                    listView.dataSource.read(arrayQuestion);
+
+                                    var obj = document.getElementById("audio");
+
+                                    //Danh sach cac file am thanh
+                                    var rightSoundArray = [
+                                        '/Sounds/right_0_vn.wav',
+                                        '/Sounds/right_1_vn.wav',
+                                        '/Sounds/right_2_vn.wav',
+                                        '/Sounds/right_3_vn.wav',
+                                        '/Sounds/claps3.wav'
+                                    ];
+                                    var randomSoundRight = Math.floor(Math.random() * rightSoundArray.length);
+                                    obj.setAttribute("src", rightSoundArray[randomSoundRight]);
+                                    $.get();
+                                    obj.play();
+
+                                    var rightImageArray = [
+                                        '/Images/true.png',
+                                        '/Images/Smile_1.gif',
+                                        '/Images/happy-emoticon-1.gif',
+                                        '/Images/tenor_love.gif',
+                                        '/Images/Victory_1.gif',
+                                        '/Images/Clap_1.gif'
+                                    ];
+                                    var randomImageRight = Math.floor(Math.random() * rightImageArray.length);
+                                    img.attr("src", rightImageArray[randomImageRight]);
+                                }
+                                else {
+                                    arrayQuestion[step - 1].Icon = "../Images/Status/DisAgree.png";
+
+                                    var listView = $("#listViewQuestion").data("kendoListBox");
+                                    listView.setDataSource(new kendo.data.DataSource({
+                                        data: arrayQuestion
+                                    }));
+                                    listView.dataSource.read(arrayQuestion);
+
+                                    var obj = document.getElementById("audio");
+
+                                    var wrongSoundArray = [
+                                        '/Sounds/wrong.wav',
+                                        '/Sounds/incorrect.wav'
+                                    ];
+                                    var randomWrong = Math.floor(Math.random() * wrongSoundArray.length);
+                                    obj.setAttribute("src", wrongSoundArray[randomWrong]);
+                                    $.get();
+                                    obj.play();
+
+                                    img.attr("src", "/Images/false.png");
+                                }
+
+                                divNumber.show();
+                                divNumber.text(total);
+
+                                var buttonAnswer = $("#btnAnswer").data("kendoButton");
+                                buttonAnswer.enable(false);
+                                answer.enable(false);
+
+                                if (question.value() <= parseInt(step)) {
+                                    setTimeout(() => {
+                                        //Alert Message
+                                        alert("Xin chúc mừng bạn đã kết thúc đợt thi!");
+
+                                        //Show bao cao
+                                        var popup = $("#ReportSorobanExam").data("kendoWindow");
+                                        popup.refresh({ url: "/ReportDetailViewer/Index/?ModuleId=1&Id=" + $("#ExamBatchId").val() });
+                                        popup.center();
+                                        popup.open();
+                                        //popup.maximize();
+                                        return false;
+                                    }, 2000);
+                                }
+                            }
+
+                            function onClickReset(e) {
+                                var result = confirm("Bạn chắc chắn muốn làm lại từ đầu chứ?");
+                                if (result) {
+                                    //Clear list Data
+                                    arrayQuestion = [];
+
+                                    var listView = $("#listViewQuestion").data("kendoListBox");
+                                    listView.setDataSource(new kendo.data.DataSource({
+                                        data: arrayQuestion
+                                    }));
+                                    listView.dataSource.read(arrayQuestion);
+
+                                    $("#Step").val(0);
+                                    $("#Id").val(0);
+                                    $("#ExamBatchId").val(0);
+                                }
+                            }
+
+                            function onClickReport(e) {
+                                e.preventDefault();
+
+                                var popup = $("#ReportSorobanExam").data("kendoWindow");
+                                popup.refresh({ url: "/ReportDetailViewer/Index/?ModuleId=1&Id=" + $("#ExamBatchId").val() });
+                                popup.center();
+                                popup.open();
+                                //popup.maximize();
+                                return false;
+                            }
+
+                            function ClearImage() {
+                                //Clear Image
+                                var img = $("#imgFinger");
+                                img.attr("src", "/Images/Blank.png");
+                            }
+
+                            $("#extruderShowNumber").buildMbExtruder({
+                                position: "right",
+                                width: 240,
+                                extruderOpacity: 1,
+                                hidePanelsOnClose: true,
+                                accordionPanels: true,
+                                onExtOpen: function () { },
+                                onExtContentLoad: function () { },
+                                onExtClose: function () { }
+                            });
+
+                            function ChangeDigit1() {
+                                var level = $("#ddlLevel").data("kendoDropDownList");
+                                var digit1 = $("#txtDigit1").data("kendoNumericTextBox");
+                                var digit2 = $("#txtDigit2").data("kendoNumericTextBox");
+
+                                if (level.value() == "1") {
+                                    if (digit1.value() < 2) {
+                                        alert('Cấp độ số tròn chục thì phải từ 2 chữ số trở lên.');
+                                        digit1.value(2);
+                                    }
+
+                                    digit2.value(digit1.value());
+                                }
+
+                                if (digit1.value() < digit2.value()) {
+                                    GetMaxResult(digit2.value(), parseInt(level.value()));
+                                }
+                                else {
+                                    GetMaxResult(digit1.value(), parseInt(level.value()));
+                                }
+                            }
+
+                            function SpinDigit1() {
+                                var level = $("#ddlLevel").data("kendoDropDownList");
+                                var digit1 = $("#txtDigit1").data("kendoNumericTextBox");
+                                var digit2 = $("#txtDigit2").data("kendoNumericTextBox");
+
+                                if (level.value() == "1") {
+                                    if (digit1.value() < 2) {
+                                        alert('Cấp độ số tròn chục thì phải từ 2 chữ số trở lên.');
+                                        digit1.value(2);
+                                    }
+
+                                    digit2.value(digit1.value());
+                                }
+
+                                if (digit1.value() < digit2.value()) {
+                                    GetMaxResult(digit2.value(), parseInt(level.value()));
+                                }
+                                else {
+                                    GetMaxResult(digit1.value(), parseInt(level.value()));
+                                }
+                            }
+
+                            function ChangeDigit2() {
+                                var level = $("#ddlLevel").data("kendoDropDownList");
+                                var digit1 = $("#txtDigit1").data("kendoNumericTextBox");
+                                var digit2 = $("#txtDigit2").data("kendoNumericTextBox");
+
+                                if (level.value() == "1") {
+                                    if (digit2.value() < 2) {
+                                        alert('Cấp độ số tròn chục thì phải từ 2 chữ số trở lên.');
+                                        digit2.value(2);
+                                    }
+
+                                    digit1.value(digit2.value());
+                                }
+
+                                if (digit1.value() < digit2.value()) {
+                                    GetMaxResult(digit2.value(), parseInt(level.value()));
+                                }
+                                else {
+                                    GetMaxResult(digit1.value(), parseInt(level.value()));
+                                }
+                            }
+
+                            function SpinDigit2() {
+                                var level = $("#ddlLevel").data("kendoDropDownList");
+                                var digit1 = $("#txtDigit1").data("kendoNumericTextBox");
+                                var digit2 = $("#txtDigit2").data("kendoNumericTextBox");
+
+                                if (level.value() == "1") {
+                                    if (digit2.value() < 2) {
+                                        alert('Cấp độ số tròn chục thì phải từ 2 chữ số trở lên.');
+                                        digit2.value(2);
+                                    }
+
+                                    digit1.value(digit2.value());
+                                }
+
+                                if (digit1.value() < digit2.value()) {
+                                    GetMaxResult(digit2.value(), parseInt(level.value()));
+                                }
+                                else {
+                                    GetMaxResult(digit1.value(), parseInt(level.value()));
+                                }
+                            }
+
+                            function FontSizeChange() {
+                                var fontColor1 = $("#ddlFontColor1").data("kendoColorPicker");
+                                var fontColor2 = $("#ddlFontColor2").data("kendoColorPicker");
+                                var divNum = $("#divNumber");
+
+                                divNum.css("font-size", this.value());
+
+                                if (fontColor1 != null && fontColor1.value() != null) {
+                                    divNum.css("color", fontColor1.value());
+                                }
+                                else {
+                                    divNum.css("color", "Blue");
+                                }
+                            }
+
+                            function FontColorChange(e) {
+                                var fontSize = $("#txtFontSize").data("kendoNumericTextBox");
+                                var divNum = $("#divNumber");
+
+                                if (fontSize != null && fontSize.value() != null) {
+                                    divNum.css("font-size", fontSize.value());
+                                }
+                                else {
+                                    divNum.css("font-size", 45);
+                                }
+
+                                divNum.css("color", e.value);
+                            }
+
+                            function onClickSave(e) {
+                                var result = confirm('Bạn chắc chắn muốn ghi lại các tham số này chứ?');
+                                if (result) {
+                                    var digit1 = $("#txtDigit1").data("kendoNumericTextBox");
+                                    var digit2 = $("#txtDigit2").data("kendoNumericTextBox");
+
+                                    //Validate data
+                                    var studentName = $("#StudentName").data("kendoTextBox");
+                                    if (studentName.value() == "") {
+                                        alert("Họ và tên không được để trống!");
+                                        studentName.focus();
+                                        return false;
+                                    }
+
+                                    var className = $("#ClassName").data("kendoTextBox");
+
+                                    var question = $("#txtQuestion").data("kendoNumericTextBox");
+                                    if (question.value() == null) {
+                                        alert("Số câu hỏi không được để trống!");
+                                        question.focus();
+                                        return false;
+                                    }
+
+                                    var random = $("#txtRandom").data("kendoNumericTextBox");
+                                    if (random.value() == null) {
+                                        alert("Độ dài phép tính không được để trống!");
+                                        random.focus();
+                                        return false;
+                                    }
+
+                                    if ($("#checkAdd").prop('checked') == false && $("#checkSubtract").prop('checked') == false && $("#checkMulti").prop('checked') == false && $("#checkDivision").prop('checked') == false) {
+                                        alert("Bạn phải chọn phép tính để kiểm tra!");
+                                        return false;
+                                    }
+
+                                    //Validate Digit
+                                    if (digit1.value() == null || digit1.value() == "") {
+                                        alert('Số hạng 1 không được để trống!');
+                                        digit1.focus();
+                                        return false;
+                                    }
+
+                                    if (digit2.value() == null || digit2.value() == "") {
+                                        alert('Số hạng 2 không được để trống!');
+                                        digit2.focus();
+                                        return false;
+                                    }
+
+                                    //Validate
+                                    var displayTimeOut = $("#txtDisplayTimeOut").data("kendoNumericTextBox");
+                                    if (displayTimeOut.value() == null || displayTimeOut.value() == "") {
+                                        alert('Thời gian hiển thị không được để trống!');
+                                        displayTimeOut.focus();
+                                        return false;
+                                    }
+
+                                    var answerTimeOut = $("#txtAnswerTimeOut").data("kendoNumericTextBox");
+                                    if (answerTimeOut.value() == null || answerTimeOut.value() == "") {
+                                        alert('Thời gian trả lời không được để trống!');
+                                        answerTimeOut.focus();
+                                        return false;
+                                    }
+
+                                    //Set param
+                                    var fontSize = $("#txtFontSize").data("kendoNumericTextBox");
+                                    var fontColor1 = $("#ddlFontColor1").data("kendoColorPicker");
+                                    var fontColor2 = $("#ddlFontColor2").data("kendoColorPicker");
+
+                                    var levelId = $("#ddlLevel").data("kendoDropDownList");
+                                    var ddlMultiplicationType = $("#ddlMultiplicationType").data("kendoDropDownList");
+
+                                    //Tao batch moi
+                                    $.ajax({
+                                        url: '/Abacus/SaveSetting',
+                                        type: 'POST',
+                                        dataType: 'json',
+                                        data: { "Id": 0, "Name": studentName.value(), "ClassName": className.value(), "TypeId": 1, "Question": question.value(), "Random": random.value(), "IsInteger": $("input[name='IsInteger']:checked").val(), "IsNegative": $("input[name='IsNegative']:checked").val(), "OperationAdd": $("#checkAdd").prop('checked'), "OperationSub": $("#checkSubtract").prop('checked'), "OperationMulti": $("#checkMulti").prop('checked'), "OperationDivision": $("#checkDivision").prop('checked'), "Digit1": digit1.value(), "MinDigit1": null, "MaxDigit1": null, "Digit2": digit2.value(), "MinDigit2": null, "MaxDigit2": null, "TimeOutDisplay": displayTimeOut.value(), "TimeOutAnswer": answerTimeOut.value(), "Sound": $("input[name='Sound']:checked").val(), "FontSize": fontSize.value(), "FontColor1": fontColor1.value(), "FontColor2": fontColor2.value(), "LevelId": levelId.value(), "MultiplicationTypeId": ddlMultiplicationType.value() },
+                                        success: function (data, textStatus, xhr) {
+
+                                        },
+                                        error: function (xhr, textStatus, errorThrown) {
+                                            alert(errorThrown);
+                                        }
+                                    });
+                                }
+                            }
+
+                            function onOpenDialog(e) {
+                                var elem = document.documentElement;
+                                if (elem.requestFullscreen) {
+                                    elem.requestFullscreen();
+                                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                                    elem.mozRequestFullScreen();
+                                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                                    elem.webkitRequestFullscreen();
+                                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                                    elem.msRequestFullscreen();
+                                }
+
+                                var popup = $("#ReportSorobanExam").data("kendoWindow");
+                                popup.refresh({ url: "/Abacus/ExamDialog" });
+                                popup.title("");
+                                popup.center();
+                                popup.open();
+                                popup.maximize();
+                                return false;
+                            }
+
+                            function AnswerChange() {
+                                var value = this.value();
+                                if (value != null) {
+                                    onClickAnswer();
+                                }
+                            }
+
+                            function AnswerSpin() {
+                                var value = this.value();
+                                if (value != null) {
+                                    //onClickAnswer();
+                                }
+                            }
+
+                            /* View in fullscreen */
+                            function openFullscreen() {
+                                var elem = document.documentElement;
+                                if (elem.requestFullscreen) {
+                                    elem.requestFullscreen();
+                                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                                    elem.mozRequestFullScreen();
+                                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                                    elem.webkitRequestFullscreen();
+                                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                                    elem.msRequestFullscreen();
+                                }
+                            }
+
+                            /* Close fullscreen */
+                            function closeFullscreen() {
+                                var elem = document.documentElement;
+                                if (document.exitFullscreen) {
+                                    document.exitFullscreen();
+                                } else if (document.mozCancelFullScreen) { /* Firefox */
+                                    document.mozCancelFullScreen();
+                                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                                    document.webkitExitFullscreen();
+                                } else if (document.msExitFullscreen) { /* IE/Edge */
+                                    document.msExitFullscreen();
+                                }
+                            }
+
+                            function onSelectBackGround(e) {
+                                if (e.item) {
+                                    var dataItem = this.dataItem(e.item);
+                                    var urlImage = dataItem.BackGroundImage;
+                                    var urlValue = dataItem.Id;
+                                    $("#SorobanBackGround").css("background-image", "url('" + urlImage + "')");
+
+                                    //Save data background image
+                                    $.ajax({
+                                        url: '/Abacus/SaveBackGroundImage',
+                                        type: 'POST',
+                                        dataType: 'json',
+                                        data: { "typeId": 1, "backGroundImage": urlImage, "backGroundImageId": urlValue },
+                                        success: function (data, textStatus, xhr) {
+
+                                        },
+                                        error: function (xhr, textStatus, errorThrown) {
+                                            alert(errorThrown);
+                                        }
+                                    });
+                                }
+                            }
+
+                            function onChange(e) {
+                                var level = $("#ddlLevel").data("kendoDropDownList");
+                                var digit1 = $("#txtDigit1").data("kendoNumericTextBox");
+                                var digit2 = $("#txtDigit2").data("kendoNumericTextBox");
+
+                                if (level.value() == "1") {
+                                    if (digit1.value() < 2) {
+                                        digit1.value(2);
+                                    }
+                                    digit2.value(digit1.value());
+                                }
+
+                                if (digit1.value() < digit2.value()) {
+                                    GetMaxResult(digit2.value(), parseInt(level.value()));
+                                }
+                                else {
+                                    GetMaxResult(digit1.value(), parseInt(level.value()));
+                                }
+                            }
+
+                            $(function () {
+                                $("#checkAdd").change(function () {
+                                    var checked = $(this).is(':checked');
+
+                                    if (checked) {
+                                        $("#checkMulti").prop('checked', false);
+                                        $("#checkDivision").prop('checked', false);
+                                    }
+
+                                    $("#ddlLevel").data("kendoDropDownList").dataSource.read();
+                                });
+                            });
+
+                            $(function () {
+                                $("#checkSubtract").change(function () {
+                                    var checked = $(this).is(':checked');
+
+                                    if (checked) {
+                                        $("#checkMulti").prop('checked', false);
+                                        $("#checkDivision").prop('checked', false);
+                                    }
+
+                                    $("#ddlLevel").data("kendoDropDownList").dataSource.read();
+                                });
+                            });
+
+                            $(function () {
+                                $("#checkMulti").change(function () {
+                                    var checked = $(this).is(':checked');
+
+                                    if (checked) {
+                                        $("#checkAdd").prop('checked', false);
+                                        $("#checkSubtract").prop('checked', false);
+                                    }
+
+                                    $("#ddlLevel").data("kendoDropDownList").dataSource.read();
+                                });
+                            });
+
+                            $(function () {
+                                $("#checkDivision").change(function () {
+                                    var checked = $(this).is(':checked');
+
+                                    if (checked) {
+                                        $("#checkAdd").prop('checked', false);
+                                        $("#checkSubtract").prop('checked', false);
+                                    }
+
+                                    $("#ddlLevel").data("kendoDropDownList").dataSource.read();
+                                });
+                            });
+
+                            function GetMaxResult(maxDigit, level) {
+                                var integerNumber = 0;
+                                var checkIsNegative = 0;
+
+                                if (level < 14) {
+                                    //An option thu 2 di
+                                    $('#lblResult2').hide();
+                                    $('#rblResult2').hide();
+                                }
+                                else {
+                                    $('#lblResult2').show();
+                                    $('#rblResult2').show();
+                                }
+
+                                //Mark digit
+                                if (maxDigit == 0 || maxDigit == 1) {
+                                    if (level < 14) {
+                                        $("#rblResult1").val(9);
+                                        $("#rblResult2").val(9);
+
+                                        $('#lblResult1').text('9');
+                                        $('#lblResult2').text('9');
+                                    }
+                                    else {
+                                        $("#rblResult1").val(9);
+                                        $("#rblResult2").val(99);
+
+                                        $('#lblResult1').text('9');
+                                        $('#lblResult2').text('99');
+                                    }
+                                }
+                                else if (maxDigit == 2) {
+                                    if (level < 14) {
+                                        $("#rblResult1").val(99);
+                                        $("#rblResult2").val(99);
+
+                                        $('#lblResult1').text('99');
+                                        $('#lblResult2').text('99');
+                                    }
+                                    else {
+                                        $("#rblResult1").val(99);
+                                        $("#rblResult2").val(999);
+
+                                        $('#lblResult1').text('99');
+                                        $('#lblResult2').text('999');
+                                    }
+                                }
+                                else if (maxDigit == 3) {
+                                    if (level < 14) {
+                                        $("#rblResult1").val(999);
+                                        $("#rblResult2").val(999);
+
+                                        $('#lblResult1').text('999');
+                                        $('#lblResult2').text('999');
+                                    }
+                                    else {
+                                        $("#rblResult1").val(999);
+                                        $("#rblResult2").val(9999);
+
+                                        $('#lblResult1').text('999');
+                                        $('#lblResult2').text('9.999');
+                                    }
+                                }
+                                else if (maxDigit == 4) {
+                                    if (level < 14) {
+                                        $("#rblResult1").val(9999);
+                                        $("#rblResult2").val(9999);
+
+                                        $('#lblResult1').text('9.999');
+                                        $('#lblResult2').text('9.999');
+                                    }
+                                    else {
+                                        $("#rblResult1").val(9999);
+                                        $("#rblResult2").val(99999);
+
+                                        $('#lblResult1').text('9.999');
+                                        $('#lblResult2').text('99.999');
+                                    }
+                                }
+                                else if (maxDigit == 5) {
+                                    if (level < 14) {
+                                        $("#rblResult1").val(99999);
+                                        $("#rblResult2").val(99999);
+
+                                        $('#lblResult1').text('99.999');
+                                        $('#lblResult2').text('99.999');
+                                    }
+                                    else {
+                                        $("#rblResult1").val(99999);
+                                        $("#rblResult2").val(999999);
+
+                                        $('#lblResult1').text('99.999');
+                                        $('#lblResult2').text('999.999');
+                                    }
+                                }
+                                else if (maxDigit == 6) {
+                                    if (level < 14) {
+                                        $("#rblResult1").val(999999);
+                                        $("#rblResult2").val(999999);
+
+                                        $('#lblResult1').text('999.999');
+                                        $('#lblResult2').text('999.999');
+                                    }
+                                    else {
+                                        $("#rblResult1").val(999999);
+                                        $("#rblResult2").val(9999999);
+
+                                        $('#lblResult1').text('999.999');
+                                        $('#lblResult2').text('9.999.999');
+                                    }
+                                }
+                                else if (maxDigit == 7) {
+                                    if (level < 14) {
+                                        $("#rblResult1").val(9999999);
+                                        $("#rblResult2").val(9999999);
+
+                                        $('#lblResult1').text('9.999.999');
+                                        $('#lblResult2').text('9.999.999');
+                                    }
+                                    else {
+                                        $("#rblResult1").val(9999999);
+                                        $("#rblResult2").val(99999999);
+
+                                        $('#lblResult1').text('9.999.999');
+                                        $('#lblResult2').text('99.999.999');
+                                    }
+                                }
+                                else if (maxDigit == 8) {
+                                    if (level < 14) {
+                                        $("#rblResult1").val(99999999);
+                                        $("#rblResult2").val(99999999);
+
+                                        $('#lblResult1').text('99.999.999');
+                                        $('#lblResult2').text('99.999.999');
+                                    }
+                                    else {
+                                        $("#rblResult1").val(99999999);
+                                        $("#rblResult2").val(999999999);
+
+                                        $('#lblResult1').text('99.999.999');
+                                        $('#lblResult2').text('999.999.999');
+                                    }
+                                }
+                                else if (maxDigit == 9) {
+                                    if (level < 14) {
+                                        $("#rblResult1").val(999999999);
+                                        $("#rblResult2").val(999999999);
+
+                                        $('#lblResult1').text('999.999.999');
+                                        $('#lblResult2').text('999.999.999');
+                                    }
+                                    else {
+                                        $("#rblResult1").val(999999999);
+                                        $("#lblResult2").val(9999999999);
+
+                                        $('#rblResult1').text('999.999.999');
+                                        $('#lblResult2').text('9.999.999.999');
+                                    }
+                                }
+                                else {
+                                    if (level < 14) {
+                                        $("#rblResult1").val(9);
+                                        $("#rblResult2").val(9);
+
+                                        $('#lblResult1').text('9');
+                                        $('#lblResult2').text('9');
+                                    }
+                                    else {
+                                        $("#rblResult1").val(9);
+                                        $("#rblResult2").val(99);
+
+                                        $('#lblResult1').text('9');
+                                        $('#lblResult2').text('99');
+                                    }
+                                }
+                            }
+
+                            function filterLevel(args) {
+                                var checkMulti = $("#checkMulti");
+                                var checkDivision = $("#checkDivision");
+
+                                return {
+                                    multi: checkMulti.is(":checked"),
+                                    division: checkDivision.is(":checked")
+                                };
+                            }
+                        </script>
+
+
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+    <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/site.js?v=4q1jwFhaPaZgr8WAUSrux6hAuh0XDg9kPS3xIVq36I0"></script>
+
+    <script type="text/javascript">
+        GetMaxResult(1, 39);
+    </script>
+
+</body>
+
+</html>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var lang = localStorage.getItem('current-lang');
+
+        if (lang == null) {
+            lang = "vn-VN";
+        }
+        else if (lang == "vi") {
+            lang = "vi-VN";
+        }
+        else if (lang == "en") {
+            lang = "en-US";
+        }
+        else if (lang == "ja") {
+            lang = "ja-JP";
+        }
+
+        localStorage.setItem('current-lang', lang);
+
+        var iconLangs = $(".show-lang");
+        for (var icon of iconLangs) {
+            if ($(icon).attr("show-lang") == lang) {
+                $(icon).show();
+            }
+            else {
+                $(icon).hide();
+            }
+        }
+
+        //$("#menu").kendoMenu({
+        //    dataTextField: "Text",
+        //    dataSource: {
+        //        transport: {
+        //            read: {
+        //                url: "https://demos.telerik.com/kendo-ui/service/Employees",
+        //                dataType: "jsonp"
+        //            }
+        //        },
+        //        schema: {
+        //            model: {
+        //                id: "Id",
+        //                hasChildren: "HasChildren"
+        //            }
+        //        }
+        //    }
+        //});
+
+        var tabStripFinger = $("#FingerMathTabstrip").data("kendoTabStrip");
+        if (tabStripFinger != null) {
+            var item1 = $(tabStripFinger.items()[0]).children()[1];
+            var item2 = $(tabStripFinger.items()[1]).children()[1];
+
+            if (item1 != null) {
+                if (lang == "vi-VN") {
+                    item1.innerText = "Phản xạ FingerMath";
+                }
+                else if (lang == "en-US") {
+                    item1.innerText = "FingerMath Reflex";
+                }
+                else if (lang == "ja-JP") {
+                    item1.innerText = "フィンガーマス反射";
+                }
+                else {
+                    item1.innerText = "Phản xạ FingerMath";
+                }
+            }
+
+            if (item2 != null) {
+                if (lang == "vi-VN") {
+                    item2.innerText = "Thiết lập tham số";
+                }
+                else if (lang == "en-US") {
+                    item2.innerText = "Setting Parameter";
+                }
+                else if (lang == "ja-JP") {
+                    item2.innerText = "パラメータを設定する";
+                }
+                else {
+                    item2.innerText = "Thiết lập tham số";
+                }
+            }
+        }
+
+        var tabStripSoroban = $("#SorobanTabstrip").data("kendoTabStrip");
+        if (tabStripSoroban != null) {
+            var item1 = $(tabStripSoroban.items()[0]).children()[1];
+            var item2 = $(tabStripSoroban.items()[1]).children()[1];
+
+            if (item1 != null) {
+                if (lang == "vi-VN") {
+                    item1.innerText = "Luyện tập Soroban";
+                }
+                else if (lang == "en-US") {
+                    item1.innerText = "Soroban Exam";
+                }
+                else if (lang == "ja-JP") {
+                    item1.innerText = "そろばんの練習";
+                }
+                else {
+                    item1.innerText = "Luyện tập Soroban";
+                }
+            }
+
+            if (item2 != null) {
+                if (lang == "vi-VN") {
+                    item2.innerText = "Thiết lập tham số";
+                }
+                else if (lang == "en-US") {
+                    item2.innerText = "Setting Parameter";
+                }
+                else if (lang == "ja-JP") {
+                    item2.innerText = "パラメータを設定する";
+                }
+                else {
+                    item2.innerText = "Thiết lập tham số";
+                }
+            }
+        }
+
+
+        i18next.use(i18nextXHRBackend).init({ lng: lang, backend: { loadPath: '/Translations/{{lng}}.json' }, initImmediate: false, debug: false }, function (err, t) {
+            jqueryI18next.init(i18next, $);
+            setTimeout(function () {
+                $('body').localize();
+            }, 200);
+
+            $('.lang-select').click(function () {
+                var currentLang = $(this).attr("data-lang");
+
+                if (currentLang == "vi") {
+                    currentLang = "vi-VN";
+                }
+                else if (currentLang == "en") {
+                    currentLang = "en-US";
+                }
+                else if (currentLang == "ja") {
+                    currentLang = "ja-JP";
+                }
+
+                i18next.changeLanguage(currentLang);
+                localStorage.setItem('current-lang', $(this).attr('data-lang'));
+
+                location.reload();
+            });
+        });
+
+        setTimeout(function () {
+        }, 100);
+    });
+
+    $(document).ready(function () {
+        $("#responsive-panel").kendoResponsivePanel({
+            breakpoint: 768,
+            autoClose: false,
+            orientation: "top"
+        });
+    });
+
+    $(function () {
+        $('.mydropdownjQuery').hover(function () {
+            $(this).addClass('open');
+        },
+            function () {
+                $(this).removeClass('open');
+            });
+    });
+
+    var specialKeys = new Array();
+    specialKeys.push(8);  //Backspace
+    specialKeys.push(9);  //Tab
+    specialKeys.push(46); //Delete
+    specialKeys.push(36); //Home
+    specialKeys.push(35); //End
+    specialKeys.push(37); //Left
+    specialKeys.push(39); //Right
+
+    function IsAlphaNumeric(e) {
+        var keyCode = e.keyCode == 0 ? e.charCode : e.keyCode;
+        var ret = ((keyCode >= 48 && keyCode <= 57) || (keyCode >= 65 && keyCode <= 90) || (keyCode >= 97 && keyCode <= 122) || (keyCode = 95) || (specialKeys.indexOf(e.keyCode) != -1 && e.charCode != e.keyCode));
+        return ret;
+    }
+
+    jQuery.event.special.touchstart = {
+        setup: function (_, ns, handle) {
+            if (ns.includes("noPreventDefault")) {
+                this.addEventListener("touchstart", handle, { passive: false });
+            } else {
+                this.addEventListener("touchstart", handle, { passive: true });
+            }
+        }
+    };
+    jQuery.event.special.touchmove = {
+        setup: function (_, ns, handle) {
+            if (ns.includes("noPreventDefault")) {
+                this.addEventListener("touchmove", handle, { passive: false });
+            } else {
+                this.addEventListener("touchmove", handle, { passive: true });
+            }
+        }
+    };
+</script>

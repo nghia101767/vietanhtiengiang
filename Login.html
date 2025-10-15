@@ -1,0 +1,344 @@
+<html class="k-webkit k-webkit141">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./assets/app.css" type="text/css">
+    <style type="text/css">
+        body {
+            background-image: url('assets/login_bg.png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-size: 100% 100%;
+        }
+
+        .input-container {
+            display: flex;
+            /*margin-bottom: 10px;*/
+        }
+
+        /* Style the form icons */
+        .icon {
+            padding-top: 10px;
+            padding-right: 5px;
+            padding-bottom: 10px;
+            padding-left: 5px;
+            background: dodgerblue;
+            color: white;
+            min-width: 40px;
+            text-align: center;
+            border-top-left-radius: 6px;
+            border-bottom-left-radius: 6px;
+        }
+
+        .wrapper {
+            margin-top: 114px;
+            margin-bottom: 20px;
+            opacity: 0.8
+        }
+
+        .captcha {
+            border-top-left-radius: 6px;
+            border-bottom-left-radius: 6px;
+        }
+
+        .captchaImg {
+            border-top-right-radius: 6px;
+            border-bottom-right-radius: 6px;
+            border-top-left-radius: 6px;
+            border-bottom-left-radius: 6px;
+        }
+
+        .imageClass {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #000;
+        }
+
+        .textBox {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .moduleContainer {
+            background-color: #dff3ff;
+            border: 1px solid #c6e1f2;
+            padding: 15px 0 30px 10px;
+            -moz-border-radius: 6px;
+            -webkit-border-radius: 6px;
+            border-radius: 6px;
+            -moz-box-shadow: 5px 5px 10px #ccc;
+            -webkit-box-shadow: 5px 5px 10px #ccc;
+            box-shadow: 5px 5px 10px #ccc;
+        }
+
+        .imgCorrectCode {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border: 3px solid green;
+        }
+
+        .imgWrongCode {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border: 3px solid red;
+        }
+
+        .RadCaptcha span {
+            color: Red;
+        }
+
+        .BgTop {
+            background-image: url("../../Images/Bg_Horizontal_Top.png");
+            height: 10px;
+        }
+
+        .BgBottom {
+            background-image: url("../../Images/Bg_Horizontal_Bottom.png");
+            height: 10px;
+        }
+
+        .BgLeft {
+            background-image: url("../../Images/Bg_Vertical_Left.png");
+            width: 10px;
+        }
+
+        .BgRight {
+            background-image: url("../../Images/Bg_Vertical_Right.png");
+            width: 10px;
+        }
+
+        .BgCornerTopLeft {
+            background-image: url("../../Images/Bg_Corner_TopLeft.png");
+        }
+
+        .BgCornerTopRight {
+            background-image: url("../../Images/Bg_Corner_TopRight.png");
+        }
+
+        .BgCornerButtomLeft {
+            background-image: url("../../Images/Bg_Corner_ButtomLeft.png");
+        }
+
+        .BgCornerButtomRight {
+            background-image: url("../../Images/Bg_Corner_ButtomRight.png");
+        }
+
+        .styleDescription {
+            font-style: italic;
+            font-size: 10pt;
+            color: gray;
+        }
+
+        .form-control {
+            border-radius: 0px;
+            border-top-right-radius: 6px;
+            border-bottom-right-radius: 6px;
+        }
+
+        .Title {
+            font-weight: bold;
+        }
+
+        li {
+            color: red;
+            display: list-item;
+            text-align: -webkit-match-parent;
+        }
+
+        .Validate {
+            color: red;
+        }
+
+        .form-signin {
+            max-width: 380px;
+            padding: 15px 35px 45px;
+            margin: 0 auto;
+            background-image: linear-gradient(180deg, #fbca71, white);
+            /*background-color: rgba(255,255,255,0.7);*/
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+        }
+
+        .form-signin .form-signin-heading,
+        .form-signin .checkbox {
+            margin-bottom: 30px;
+        }
+
+        .form-signin .checkbox {
+            font-weight: normal;
+        }
+
+        .form-signin .form-control {
+            position: relative;
+            height: auto;
+            padding: 5px;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .form-signin .form-control:focus {
+            z-index: 2;
+        }
+
+        .form-signin input[type="text"] {
+            margin-bottom: 0px;
+        }
+
+        .form-signin input[type="password"] {
+            margin-bottom: 10px;
+        }
+
+        .dropdown-menu {
+            top: 12px !important;
+            background-color: #1b5282 !important;
+            font-size: 9.5pt !important;
+            padding-top: 3px !important;
+            padding-bottom: 3px !important;
+            padding-right: 1px !important;
+            padding-left: 1px !important;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+            background-color: transparent;
+        }
+
+        a:hover {
+            color: yellow;
+            background-color: transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dropdown" style="float: right; margin-top: 4px;margin-right:80px;">
+        <a class="dropdown-toggle" data-toggle="dropdown">
+            <img alt="Flag" show-lang="en-US" style="width: 30px; border-radius: 10%; display: none;"
+                class="show-lang icon-language" src="./Login_files/i_EN.png">
+            <img alt="Flag" show-lang="vi-VN" style="width: 30px; border-radius: 10%; display: none;"
+                class="show-lang icon-language" src="./Login_files/i_VN.png">
+            <img alt="Flag" show-lang="ja-JP" style="width: 30px; border-radius: 10%; display: none;"
+                class="show-lang icon-language" src="./Login_files/i_jP.png">
+        </a>
+        <ul class="dropdown-menu choose-lang" id="listLang">
+            <li>
+                <a href="javascript:void(0);" class="lang-select" data-lang="en-US">
+                    <img alt="" class="icon-language" style="width:40px;" src="./Login_files/i_EN.png">
+                    <span data-i18n="lbl_026"></span>
+                </a>
+            </li>
+            <li>
+                <div style="width: auto; height: 0; border-width: 1px 0 0; border-style: solid; border-color: white;">
+                </div>
+            </li>
+            <li>
+                <a href="javascript:void(0);" class="lang-select" data-lang="vi-VN">
+                    <img alt="" class="icon-language" style="width:40px;" src="./Login_files/i_VN.png">
+                    <span data-i18n="lbl_027"></span>
+                </a>
+            </li>
+            <li>
+                <div style="width: auto; height: 0; border-width: 1px 0 0; border-style: solid; border-color: white;">
+                </div>
+            </li>
+            <li>
+                <a href="javascript:void(0);" class="lang-select" data-lang="ja-JP">
+                    <img alt="" class="icon-language" style="width:40px;" src="./Login_files/i_jP.png">
+                    <span data-i18n="lbl_028"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="body hidden-xs text-right language p-l-xs p-r-xs"
+        style="color: black; float: left; vertical-align: middle; margin-top: 5px; width: 130px; margin-left: 20px; ">
+
+    </div>
+
+    <div class="row" style="margin-top:5px;">
+        <div class="col-sm-11">
+
+        </div>
+        <div class="col-sm-1">
+
+        </div>
+    </div>
+    <div class="wrapper">
+        <form method="post" id="LoginForm" class="form-signin" action="#">
+            <div class="row" style="margin-top:0px;">
+                <div class="col-md-11 d-flex justify-content-center text-center">
+                    <img src="./Login_files/Logo.png" style="width:200px;" alt="Logo">
+                </div>
+            </div>
+            <div class="row" style="margin-top:20px;">
+                <div class="panel-heading col-12" style="color: deeppink;text-align:center;">
+                    <span class="Title" data-i18n="lbl_101">ĐĂNG NHẬP HỆ THỐNG</span>
+                </div>
+            </div>
+            <div class="row" style="margin-top:15px;">
+                <div class="validation-summary-valid" data-valmsg-summary="true">
+                    <ul>
+                        <li style="display:none"></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="input-container" style="margin-top:5px;">
+                <i class="fa fa-user icon"></i>
+                <input class="form-control k-textbox" id="UserName" name="UserName" placeholder="Tên đăng nhập"
+                    type="text" value="">
+            </div>
+            <div class="input-container" style="margin-top:10px;">
+                <i class="fa fa-key icon" style="height:35px"></i>
+                <input class="form-control k-textbox" id="Password" name="Password" placeholder="Mật khẩu"
+                    type="password">
+            </div>
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center text-center">
+                    <button type="submit" id="btnSubmit" class="btn btn-primary"
+                        style="margin-top:20px;width:145px;"><span data-i18n="lbl_104">Đăng nhập</span></button>
+                    <button type="button" id="btnRegister" class="btn btn-outline-secondary"
+                        style="margin-top:20px;margin-left:20px;width:145px;" onclick="/"><span data-i18n="lbl_105">Đăng
+                            ký</span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(`#LoginForm`).on('submit', function (e) {
+                e.preventDefault();
+                localStorage.setItem('id', Math.random().toString())
+                window.location.href = '/Home.html';
+            })
+
+        });
+
+
+
+    </script>
+</body>
+
+</html>

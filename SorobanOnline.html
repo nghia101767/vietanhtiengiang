@@ -1,0 +1,43 @@
+<script type="text/javascript" src="./SorobanOnline_files/abacus.js"></script>
+<style type="text/css">
+    bodyContent {
+        text-align: center;
+    }
+
+    alignSoroban {
+        position: absolute;
+        /*left: 150px;*/
+    }
+
+    .menuAlign {
+        float: right;
+    }
+</style>
+
+<body>
+    <div style="margin-top:10px;margin-left:8px;">
+        <br />
+        <div>
+            <b>Hướng dẫn sử dụng bàn tính Soroban Online</b>
+            <br />1. Khi bạn dùng chuột để gẩy các hạt trên bàn tính online, một ô ở ngay phía trên bàn tính sẽ thể hiện
+            con số tương ứng với các hạt mà bạn đang gảy ở trên bàn tính.
+            <br />2. Nếu bạn gõ vào một con số bất kỳ, thì các hạt ở trên bàn tính sẽ di chuyển tương ứng với kết quả
+            con số mà bạn đã gõ vào để thể hiện trên bàn tính.
+            <br />3. Nếu bạn muốn bàn tính thể hiện số thập phân phía sau dấu phẩy, bạn hãy dùng chuột di chuyển thanh
+            dọc ngăn cách ở thanh xà giữa, khoảng cách của thanh xà dọc ấy cách bao nhiêu cột về tính về phía bên tay
+            phải thì sẽ ứng với từng ấy số thập phân được thể hiện ra trên bàn tính.
+        </div>
+        <br />
+    </div>
+</body>
+<div>
+    <article id="abacus_article" data-format="Japanese" data-sound="1" data-rails="20"></article>
+    <input id="abacus_rails" type="hidden" value="20" />
+    <input id="abacus_rails_number" type="hidden" value="20" />
+    <div id="abacus_p">
+        <span id="abacus_span" contenteditable="true" style="padding-right: 50%;"></span>
+    </div>
+    <script type="text/javascript">
+        initAbacus(null, document.getElementById("abacus_span"), document.getElementById("abacus_rails"));
+    </script>
+</div>
